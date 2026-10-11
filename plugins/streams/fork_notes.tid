@@ -1,6 +1,6 @@
 title: $:/plugins/sq/streams/fork_notes
 
-! Research fork 1.3.0
+! Research fork 1.3.1
 
 Based on upstream Streams 1.2.24, commit 17dfc9cf634338f986acc99413113884cfaba2a0. The plugin keeps its existing title and node fields, and replaces the upstream plugin when installed.
 
@@ -15,3 +15,5 @@ Based on upstream Streams 1.2.24, commit 17dfc9cf634338f986acc99413113884cfaba2a
 When edit-mode integration is enabled, new drafts capture their initial structural fields. Saving keeps later node moves and child-list updates when those fields were not explicitly edited in the draft. Explicit draft field edits take precedence. Draft bookkeeping is removed on save. Drafts created before installing this version have no baseline and retain the core's save behavior.
 
 The supported acceptance-test target for this fork is TiddlyWiki 5.4.1 with Relink 2.6.1. The research presentation choices belong in the separate Research customizations plugin.
+
+Version 1.3.1 also corrects child parent pointers when merging a node into its previous sibling. The child transfer now updates both directions before removing the old node.
