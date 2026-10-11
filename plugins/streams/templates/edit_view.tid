@@ -1,0 +1,11 @@
+title: $:/plugins/sq/streams/templates/edit_view
+tags: $:/tags/EditTemplate
+list-after: $:/core/ui/EditTemplate/body
+
+<$list filter="[{$:/config/sq/streams/enable_edit_mode}match[yes]]" variable="stream_edit_enabled">
+<$tiddler tiddler={{{ [all[current]get[draft.of]is[tiddler]] ~[all[current]] }}}>
+<$list filter="[all[current]subfilter{$:/config/sq/streams/stream-enable-filter}]">
+{{||$:/plugins/sq/streams/nodes-list-template}}
+</$list>
+</$tiddler>
+</$list>

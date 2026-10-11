@@ -1,0 +1,5 @@
+title: $:/plugins/sq/streams/templates/node_preview
+
+<$let stream_content_template="$:/plugins/sq/streams/templates/stream-row-template" dropTargetTiddler={{!!parent}}>
+{{||$:/plugins/sq/streams/templates/stream_container}}
+</$let>

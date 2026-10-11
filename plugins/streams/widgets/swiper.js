@@ -41,7 +41,7 @@ SwipeWidget.prototype.render = function(parent,nextSibling) {
 		tag = this.swipeTag;
 	}	
 	var domNode = this.document.createElement(tag);
-	if(this.swipeEnable) {
+	if(this.swipeEnable && !this.document.isTiddlyWikiFakeDom) {
 		SwipeEvents(domNode,{"swipe-threshold": this.swipeThreshold});
 	}
 	parent.insertBefore(domNode,nextSibling);

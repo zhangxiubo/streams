@@ -1,0 +1,44 @@
+title: $:/plugins/sq/streams/templates/stream_container
+
+\import [[$:/plugins/sq/streams/action-macros]] [all[shadows+tiddlers]tag[$:/tags/streams/actionmacros]]  [all[shadows+tiddlers]tag[$:/tags/streams/user-actionmacros]]
+\whitespace trim
+
+<$vars stream-root-title=<<currentTiddler>>
+	contextmenu-state=<<qualify "$:/state/sq-context-popup">>
+	row-edit-state=<<qualify "$:/state/sq/streams/current-edit-tiddler">>
+	drag-title-state=<<qualify "$:/state/sq/streams/current-drag-title">>
+	drag-title-nextsibling-state=<<qualify "$:/state/sq/streams/current-drag-nextsibling">>
+>
+	<$eventcatcher
+		selector=".stream-node-ctrl-btn"
+		$click=<<node-ctrl-btn-actions>>
+		tag="div"
+	>
+	<$eventcatcher
+		tag="div"
+		selector=".stream-row"
+		$dblclick=<<toggle-row-edit-state>>
+		$swiped-right=<<swiped-right-actions>>
+		$swiped-left=<<swiped-left-actions>>
+	>
+	<$eventcatcher
+		tag="div"
+		selector=".sq-contextmenu-container"
+		$contextmenu=<<oncontext-menu-actions>>
+	>
+	<$swiper
+		tag="div"
+		enable={{$:/config/sq/streams/swipe-enabled}}
+		swipethreshold={{$:/config/sq/streams/swipe-threshold}}
+	>
+	<div class={{{ stream-root [{$:/state/sq/nodes/global-drag-state}match[yes]then[stream-dragactive]] [<currentTiddler>!has[stream-list]then[stream-newlist]] +[join[ ]] }}}>
+		<$transclude tiddler=<<stream_content_template>>/>
+		<$set name="currentTiddler" filter={{{ [<contextmenu-state>get[current]] }}}>
+			{{||$:/plugins/sq/streams/contextmenu/contextmenu-template}}
+		</$set>
+	</div>
+	</$swiper>
+	</$eventcatcher>
+	</$eventcatcher>
+	</$eventcatcher>
+</$vars>

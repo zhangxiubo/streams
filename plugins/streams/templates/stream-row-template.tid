@@ -16,7 +16,7 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 	<div class="tc-droppable-placeholder"/>
 	<div class={{{ stream-row [<row-children-visibility-state>get[text]match[hide]then[stream-row-children-collapsed]] +[join[ ]]}}}
 		data-node-title=<<currentTiddler>>
-		data-node-tags={{!!tags}}
+		data-node-tags={{{ [all[current]subfilter{$:/config/sq/streams/node_tags_filter}] +[join[, ]] }}}
 	>
 		<$draggable
 			tag="div"
@@ -40,6 +40,9 @@ title: $:/plugins/sq/streams/templates/stream-row-template
 				</$keyboard-plus>			
 			</$list>
 		</div>
+		<$list filter="[all[shadows+tiddlers]tag[$:/tags/streams/row_decorations]!is[draft]]" variable="stream_decoration">
+			<$transclude tiddler=<<stream_decoration>>/>
+		</$list>
 	</div>
 </$droppable>
 <$reveal

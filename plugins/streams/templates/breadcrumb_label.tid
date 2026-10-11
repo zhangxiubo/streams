@@ -1,0 +1,6 @@
+title: $:/plugins/sq/streams/templates/breadcrumb_label
+
+\whitespace trim
+<$wikify name="breadcrumb_label" text={{{ [all[current]!is[binary]get[text]!is[blank]] ~[all[current]get[title]] }}}>
+<$text text={{{ [<breadcrumb_label>split[]first[50]join[]] }}}/>
+</$wikify>
