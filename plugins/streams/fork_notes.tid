@@ -1,13 +1,13 @@
 title: $:/plugins/sq/streams/fork_notes
 
-! Research fork 1.3.1
+! Research fork 1.3.2
 
 Based on upstream Streams 1.2.24, commit 17dfc9cf634338f986acc99413113884cfaba2a0. The plugin keeps its existing title and node fields, and replaces the upstream plugin when installed.
 
 * Uses current event attributes and supports server-side rendering without browser swipe APIs.
 * The outline and editable node previews share one interaction template, including context menus, keyboard actions and swipe handling.
 * `templates/node_preview` renders the current node and its children with editing controls.
-* `templates/breadcrumbs` renders ancestors using the configurable `$:/config/sq/streams/breadcrumb_template`. Traversal stops at missing parents and repeated nodes.
+* `templates/breadcrumbs` renders the complete path for both open notes and linked references. Ancestors use the configurable `$:/config/sq/streams/breadcrumb_template`; the final link identifies the current node with ◯, or its title for a root note. Traversal stops at missing parents and repeated nodes.
 * `$:/config/sq/streams/node_tags_filter` supplies the values for node styling.
 * Tiddlers tagged `$:/tags/streams/row_decorations` add content beside each row without replacing the row template.
 * `$:/config/sq/streams/enable_edit_mode` enables outlines in the core editor through `$:/tags/EditTemplate`.

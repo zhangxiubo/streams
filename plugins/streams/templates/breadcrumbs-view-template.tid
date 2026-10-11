@@ -7,7 +7,9 @@ type: text/vnd.tiddlywiki
 
 <$list filter="""[<folded-state>get[text]!is[blank]else[show]!match[hide]]""" variable="_NULL">
 <$list filter="[{$:/config/sq/streams/enable-breadcrumbs}match[yes]]" variable="_NULL">
+<$list filter="[all[current]has[parent]]" variable="breadcrumb_node">
 {{||$:/plugins/sq/streams/templates/breadcrumbs}}
+</$list>
 </$list>
 </$list>
 

@@ -2,5 +2,6 @@ title: $:/plugins/sq/streams/templates/breadcrumbs
 
 \whitespace trim
 <$list filter="[all[current]stream_ancestors[]]">
-<span class="sq-breadcrumbs-fragment"><$link to=<<currentTiddler>>><$transclude tiddler={{$:/config/sq/streams/breadcrumb_template}}/></$link> &gt; </span>
+<span class="sq-breadcrumbs-fragment"><$link to=<<currentTiddler>>><$transclude tiddler={{$:/config/sq/streams/breadcrumb_template}}/></$link>&nbsp;&gt;&nbsp;</span>
 </$list>
+<span class="sq-breadcrumbs-fragment"><$link to=<<currentTiddler>>><$text text={{{ [all[current]has[parent]then[◯]] ~[all[current]get[title]] }}}/></$link></span>
